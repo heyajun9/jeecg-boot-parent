@@ -1,0 +1,109 @@
+package ${bussiPackage}.${entityPackage}.webService.impl;
+
+import org.jeecg.common.api.vo.Result;
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.jws.WebService;
+import java.util.List;
+import lombok.extern.slf4j.Slf4j;
+import java.util.UUID;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import ${bussiPackage}.${entityPackage}.entity.${entityName};
+import ${bussiPackage}.${entityPackage}.service.I${entityName}Service;
+import ${bussiPackage}.${entityPackage}.webService.${entityName}WebService;
+
+ /**
+ * @Description: ${tableVo.ftlDescription}
+ * @Author: jeecg-boot
+ * @Date:   ${.now?string["yyyy-MM-dd"]}
+ * @Version: V1.0
+ */
+ @WebService(serviceName = "${entityName?uncap_first}WebService", // 与接口中指定的name一致
+         targetNamespace = "http://webService.${entityPackage}.${bussiPackage}", // 与接口中的命名空间一致,一般是接口的包名倒
+         endpointInterface = "${bussiPackage}.${entityPackage}.webService.${entityName}WebService"// 接口地址
+ )
+ @Component
+ @Slf4j
+public class ${entityName}WebServiceImpl implements ${entityName}WebService{
+
+    @Autowired
+    private I${entityName}Service ${entityName?uncap_first}Service;
+
+    @Override
+    public Result<${entityName}> add(@WebParam(name="${entityName?uncap_first}") ${entityName} ${entityName?uncap_first}){
+          log.info("${entityName}WebService is start!");
+          Result<${entityName}> result = new Result<${entityName}>();
+          try {
+              if(${entityName?uncap_first}.getId()==null){
+                  ${entityName?uncap_first}.setId(UUID.randomUUID().toString());
+              }
+              ${entityName?uncap_first}Service.save(${entityName?uncap_first});
+              result.success("操作成功");
+          }catch(Exception e){
+              log.error(e.getMessage(),e);
+              result.error500("操作失败");
+          }
+           return result;
+    }
+    @Override
+    public Result<List<${entityName}>> addList(@WebParam(name="${entityName?uncap_first}") List<${entityName}> ${entityName?uncap_first}){
+             log.info("${entityName}WebService is start!");
+             Result<List<${entityName}>> result = new Result<List<${entityName}>>();
+             try {
+             for (${entityName} ${entityName?uncap_first}1 : ${entityName?uncap_first}) {
+                 if(${entityName?uncap_first}1.getId()==null){
+                     ${entityName?uncap_first}1.setId(UUID.randomUUID().toString());
+                 }
+                 ${entityName?uncap_first}Service.save(${entityName?uncap_first}1);
+                 result.success("操作成功");
+                 }
+             }catch(Exception e){
+                 log.error(e.getMessage(),e);
+                 result.error500("操作失败");
+             }
+              return result;
+    }
+    @Override
+    public Result<${entityName}> edit(@WebParam(name="${entityName?uncap_first}") ${entityName} ${entityName?uncap_first}){
+       log.info("${entityName}WebService is start!");
+                Result<${entityName}> result = new Result<${entityName}>();
+                try {
+                    ${entityName?uncap_first}Service.updateById(${entityName?uncap_first});
+                    result.success("操作成功");
+                }catch(Exception e){
+                    log.error(e.getMessage(),e);
+                    result.error500("操作失败");
+                }
+                 return result;
+    }
+    @Override
+    public Result<List<${entityName}>> editList(@WebParam(name="${entityName?uncap_first}") List<${entityName}> ${entityName?uncap_first}){
+         log.info("${entityName}WebService is start!");
+                     Result<List<${entityName}>> result = new Result<List<${entityName}>>();
+                     try {
+                     for (${entityName} ${entityName?uncap_first}1 : ${entityName?uncap_first}) {
+                         ${entityName?uncap_first}Service.updateById(${entityName?uncap_first}1);
+                         result.success("操作成功");
+                         }
+                     }catch(Exception e){
+                         log.error(e.getMessage(),e);
+                         result.error500("操作失败");
+                     }
+                      return result;
+    }
+    @Override
+    public Result<${entityName}> delete(@WebParam(name="${entityName?uncap_first}") ${entityName} ${entityName?uncap_first}){
+           log.info("${entityName}WebService is start!");
+           Result<${entityName}> result = new Result<${entityName}>();
+           try {
+               ${entityName?uncap_first}Service.removeById(${entityName?uncap_first}.getId());
+               result.success("删除成功");
+           }catch(Exception e){
+               log.error(e.getMessage(),e);
+               result.error500("删除失败");
+           }
+            return result;
+    }
+}

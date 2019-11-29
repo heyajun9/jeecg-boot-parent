@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webService.wmsOrganization.demo.modules.jeecg.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="wmsOrganizationWebService" targetNamespace="http://webService.wmsOrganization.demo.modules.jeecg.org">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webService.wmsOrganization.demo.modules.jeecg.org" elementFormDefault="unqualified" targetNamespace="http://webService.wmsOrganization.demo.modules.jeecg.org" version="1.0">
+            <xs:element name="add" type="tns:add"/>
+            <xs:element name="addList" type="tns:addList"/>
+            <xs:element name="addListResponse" type="tns:addListResponse"/>
+            <xs:element name="addResponse" type="tns:addResponse"/>
+            <xs:element name="delete" type="tns:delete"/>
+            <xs:element name="deleteResponse" type="tns:deleteResponse"/>
+            <xs:element name="edit" type="tns:edit"/>
+            <xs:element name="editList" type="tns:editList"/>
+            <xs:element name="editListResponse" type="tns:editListResponse"/>
+            <xs:element name="editResponse" type="tns:editResponse"/>
+            <xs:element name="wmsOrganization" type="tns:wmsOrganization"/>
+            <xs:complexType name="delete">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="organization" type="tns:wmsOrganization"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wmsOrganization">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="area" type="xs:string"/>
+                    <xs:element minOccurs="0" name="city" type="xs:string"/>
+                    <xs:element minOccurs="0" name="createBy" type="xs:string"/>
+                    <xs:element minOccurs="0" name="createTime" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="id" type="xs:string"/>
+                    <xs:element minOccurs="0" name="organizationAddress" type="xs:string"/>
+                    <xs:element minOccurs="0" name="organizationCode" type="xs:string"/>
+                    <xs:element minOccurs="0" name="organizationName" type="xs:string"/>
+                    <xs:element minOccurs="0" name="province" type="xs:string"/>
+                    <xs:element minOccurs="0" name="sysOrgCode" type="xs:string"/>
+                    <xs:element minOccurs="0" name="updateBy" type="xs:string"/>
+                    <xs:element minOccurs="0" name="updateTime" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deleteResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:result"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="result">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="code" type="xs:int"/>
+                    <xs:element minOccurs="0" name="message" type="xs:string"/>
+                    <xs:element minOccurs="0" name="result" type="xs:anyType"/>
+                    <xs:element name="success" type="xs:boolean"/>
+                    <xs:element name="timestamp" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="edit">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="organization" type="tns:wmsOrganization"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="editResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:result"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="addList">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="organization" type="tns:wmsOrganization"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="addListResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:result"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="editList">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="organization" type="tns:wmsOrganization"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="editListResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:result"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="add">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="organization" type="tns:wmsOrganization"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="addResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:result"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="delete">
+        <wsdl:part element="tns:delete" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editListResponse">
+        <wsdl:part element="tns:editListResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addList">
+        <wsdl:part element="tns:addList" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteResponse">
+        <wsdl:part element="tns:deleteResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="edit">
+        <wsdl:part element="tns:edit" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editResponse">
+        <wsdl:part element="tns:editResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addResponse">
+        <wsdl:part element="tns:addResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editList">
+        <wsdl:part element="tns:editList" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addListResponse">
+        <wsdl:part element="tns:addListResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="add">
+        <wsdl:part element="tns:add" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="wmsOrganizationWebservice">
+        <wsdl:operation name="delete">
+            <wsdl:input message="tns:delete" name="delete">
+            </wsdl:input>
+            <wsdl:output message="tns:deleteResponse" name="deleteResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="edit">
+            <wsdl:input message="tns:edit" name="edit">
+            </wsdl:input>
+            <wsdl:output message="tns:editResponse" name="editResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addList">
+            <wsdl:input message="tns:addList" name="addList">
+            </wsdl:input>
+            <wsdl:output message="tns:addListResponse" name="addListResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editList">
+            <wsdl:input message="tns:editList" name="editList">
+            </wsdl:input>
+            <wsdl:output message="tns:editListResponse" name="editListResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="add">
+            <wsdl:input message="tns:add" name="add">
+            </wsdl:input>
+            <wsdl:output message="tns:addResponse" name="addResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="wmsOrganizationWebServiceSoapBinding" type="tns:wmsOrganizationWebservice">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="delete">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="delete">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deleteResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="edit">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="edit">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="editResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addList">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="addList">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="addListResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editList">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="editList">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="editListResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="add">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="add">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="addResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="wmsOrganizationWebService">
+        <wsdl:port binding="tns:wmsOrganizationWebServiceSoapBinding" name="WmsOrganizationWebserviceImplPort">
+            <soap:address location="http://localhost:8080/jeecg-boot/services/wmsOrganizationWebService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

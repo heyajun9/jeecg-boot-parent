@@ -1,0 +1,28 @@
+package ${bussiPackage}.${entityPackage}.webService;
+
+import org.jeecg.common.api.vo.Result;
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.jws.WebService;
+import java.util.List;
+import ${bussiPackage}.${entityPackage}.entity.${entityName};
+
+ /**
+ * @Description: ${tableVo.ftlDescription}
+ * @Author: jeecg-boot
+ * @Date:   ${.now?string["yyyy-MM-dd"]}
+ * @Version: V1.0
+ */
+@WebService(name="${entityName?uncap_first}WebService",targetNamespace = "http://webService.${entityPackage}.${bussiPackage}")
+public interface ${entityName}WebService {
+    @WebMethod
+    public Result<${entityName}> add(@WebParam(name="${entityName?uncap_first}") ${entityName} ${entityName?uncap_first});
+    @WebMethod
+    public Result<List<${entityName}>> addList(@WebParam(name="${entityName?uncap_first}") List<${entityName}> ${entityName?uncap_first});
+    @WebMethod
+    public Result<${entityName}> edit(@WebParam(name="${entityName?uncap_first}") ${entityName} ${entityName?uncap_first});
+    @WebMethod
+    public Result<List<${entityName}>> editList(@WebParam(name="${entityName?uncap_first}") List<${entityName}> ${entityName?uncap_first});
+    @WebMethod
+    public Result<${entityName}> delete(@WebParam(name="${entityName?uncap_first}") ${entityName} ${entityName?uncap_first});
+}
