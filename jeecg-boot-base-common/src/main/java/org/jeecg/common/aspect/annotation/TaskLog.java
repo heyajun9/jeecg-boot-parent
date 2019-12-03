@@ -7,7 +7,7 @@ import java.lang.annotation.*;
 /**
  * 定时任务日志注解
  * 
- * @Author scott
+ * @Author heyajun
  * @email jeecgos@163.com
  * @Date 2019年1月14日
  */

@@ -118,7 +118,7 @@ spring:
       shutdown-timeout: 100ms
     password:
     port: 6379
-#  devtools:
+#  devtools: #热部署，如果需要可以放开
 #    restart:
 #      enabled: true
 #      additional-paths: src/main/java

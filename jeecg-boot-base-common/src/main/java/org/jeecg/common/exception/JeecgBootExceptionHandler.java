@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 异常处理器
  * 
- * @Author scott
+ * @Author heyajun
  * @Date 2019
  */
 @RestControllerAdvice
