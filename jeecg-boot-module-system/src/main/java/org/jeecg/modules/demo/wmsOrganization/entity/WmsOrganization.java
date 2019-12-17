@@ -15,7 +15,7 @@ import org.jeecg.common.aspect.annotation.Dict;
 /**
  * @Description: 组织单位表
  * @Author: jeecg-boot
- * @Date:   2019-11-29
+ * @Date:   2019-12-14
  * @Version: V1.0
  */
 @Data
@@ -51,9 +51,12 @@ public class WmsOrganization implements Serializable {
 	/**组织名称*/
 	@Excel(name = "组织名称", width = 15)
 	private java.lang.String organizationName;
-	/**组织地址*/
-	@Excel(name = "组织地址", width = 15)
-	private java.lang.String organizationAddress;
+	/**状态*/
+	@Excel(name = "状态", width = 15)
+	private java.lang.String status;
+	/**地址*/
+	@Excel(name = "地址", width = 15)
+	private java.lang.String address;
 	/**省*/
 	@Excel(name = "省", width = 15)
 	private java.lang.String province;
@@ -63,6 +66,24 @@ public class WmsOrganization implements Serializable {
 	/**区*/
 	@Excel(name = "区", width = 15)
 	private java.lang.String area;
+	/**联系人*/
+	@Excel(name = "联系人", width = 15)
+	private java.lang.String callPerson;
+	/**联系方式*/
+	@Excel(name = "联系方式", width = 15)
+	private java.lang.String phone;
+	/**是否客户*/
+	@Excel(name = "是否客户", width = 15)
+	private java.lang.String isCustomer;
+	/**是否供应商*/
+	@Excel(name = "是否供应商", width = 15)
+	private java.lang.String isSupplier;
+	/**是否货主*/
+	@Excel(name = "是否货主", width = 15)
+	private java.lang.String isWarehouse;
+	/**是否承运商*/
+	@Excel(name = "是否承运商", width = 15)
+	private java.lang.String isApplication;
 	/**备注*/
 	@Excel(name = "备注", width = 15)
 	private java.lang.String note;

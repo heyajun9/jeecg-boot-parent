@@ -29,7 +29,9 @@ import com.alibaba.fastjson.JSONObject;
 import org.jeecg.common.util.*;
 import java.util.*;
 import org.jeecg.common.aspect.annotation.TaskLog;
-
+import org.jeecg.config.logFactory.LogFactory;
+import org.jeecg.modules.system.entity.SysLog;
+import org.jeecg.modules.system.service.ISysLogService;
 import org.jeecgframework.poi.excel.ExcelImportUtil;
 import org.jeecgframework.poi.excel.def.NormalExcelConstants;
 import org.jeecgframework.poi.excel.entity.ExportParams;
@@ -53,7 +55,7 @@ import org.quartz.JobExecutionException;
  /**
  * @Description: 组织单位表
  * @Author: jeecg-boot
- * @Date:   2019-11-29
+ * @Date:   2019-12-14
  * @Version: V1.0
  */
 @Slf4j
@@ -71,9 +73,10 @@ public class WmsOrganizationJob implements Job{
 	 private IInterfaceOptionService iInterfaceOptionService;
      @Autowired
      private ITableOptionService iTableOptionService;
+     @Autowired
+     private ISysLogService sysLogService;
 	
     @Override
-    @TaskLog(value = "定时任务 WmsOrganizationJob")
 	public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
 
 		log.info(String.format("welcome %s! Jeecg-Boot 带参数定时任务 WmsOrganizationJob !   时间:" + DateUtils.now(), this.parameter));
@@ -84,6 +87,11 @@ public class WmsOrganizationJob implements Job{
                  * 3、需要上传数据封装成接口配置中的json格式，
                  * 4、采用httpclient推送到上游
                  */
+          long startTime = System.currentTimeMillis();
+          String url = "";
+          String returnString = "";
+          JSONObject jsonObject = new JSONObject();
+          try{
           if (parameter != null && parameter.length() > 0 && parameter.contains(";")) {
                 String[] splits = parameter.split(";");
                 for (String pStr : splits) {
@@ -97,7 +105,6 @@ public class WmsOrganizationJob implements Job{
                               }
                 Collection<WmsOrganization> results = wmsOrganizationService.listByMap(map);
                 Collection<InterfaceOption> interfaceOptions = iInterfaceOptionService.listByMap(stringObjectHashMap);
-                JSONObject jsonObject = new JSONObject();
                 JSONArray jsonArray = new JSONArray();
                 JSONArray jsonArray1 = new JSONArray();
                 String parentColumn = "";
@@ -149,10 +156,10 @@ public class WmsOrganizationJob implements Job{
                 }
                 jsonObject.put(parentColumn, jsonArray);
                 log.info("jsonObject:"+jsonObject.toString());
-                 String url=interfaceOption.getAddress();
+                  url=interfaceOption.getAddress();
                  String userName=interfaceOption.getInterfaceUsername();
                  String password=interfaceOption.getInterfacePassword();
-                 String returnString = HttpClient.httpClientPostJson(url, jsonObject, userName, password);
+                  returnString = HttpClient.httpClientPostJson(url, jsonObject, userName, password);
          }
           }else{
            Map<String, Object> map = new HashMap<>();
@@ -160,7 +167,6 @@ public class WmsOrganizationJob implements Job{
            HashMap<String, Object> stringObjectHashMap = new HashMap<>();
            Collection<WmsOrganization> results = wmsOrganizationService.listByMap(map);
            Collection<InterfaceOption> interfaceOptions = iInterfaceOptionService.listByMap(stringObjectHashMap);
-           JSONObject jsonObject = new JSONObject();
            JSONArray jsonArray = new JSONArray();
            JSONArray jsonArray1 = new JSONArray();
            String parentColumn = "";
@@ -212,14 +218,19 @@ public class WmsOrganizationJob implements Job{
            }
            jsonObject.put(parentColumn, jsonArray);
            log.info("jsonObject:"+jsonObject.toString());
-            String url=interfaceOption.getAddress();
+            url=interfaceOption.getAddress();
             String userName=interfaceOption.getInterfaceUsername();
             String password=interfaceOption.getInterfacePassword();
-            String returnString = HttpClient.httpClientPostJson(url, jsonObject, userName, password);
+            returnString = HttpClient.httpClientPostJson(url, jsonObject, userName, password);
                    }
 
+       }catch (Exception e) {
+                    returnString += e.getMessage();
+                } finally {
+                    SysLog sysLog=LogFactory.createSysLog("定时任务 WmsOrganizationJob", "execute", jsonObject.toString(), url, System.currentTimeMillis() - startTime, returnString);
+                    sysLogService.save(sysLog);
+                }
           }
-
 
 
 }

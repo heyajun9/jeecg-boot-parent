@@ -120,9 +120,14 @@
             dataIndex: 'organizationName'
           },
           {
-            title:'组织地址',
+            title:'状态',
             align:"center",
-            dataIndex: 'organizationAddress'
+            dataIndex: 'status'
+          },
+          {
+            title:'地址',
+            align:"center",
+            dataIndex: 'address'
           },
           {
             title:'省',
@@ -138,6 +143,36 @@
             title:'区',
             align:"center",
             dataIndex: 'area'
+          },
+          {
+            title:'联系人',
+            align:"center",
+            dataIndex: 'callPerson'
+          },
+          {
+            title:'联系方式',
+            align:"center",
+            dataIndex: 'phone'
+          },
+          {
+            title:'是否客户',
+            align:"center",
+            dataIndex: 'isCustomer'
+          },
+          {
+            title:'是否供应商',
+            align:"center",
+            dataIndex: 'isSupplier'
+          },
+          {
+            title:'是否货主',
+            align:"center",
+            dataIndex: 'isWarehouse'
+          },
+          {
+            title:'是否承运商',
+            align:"center",
+            dataIndex: 'isApplication'
           },
           {
             title:'备注',

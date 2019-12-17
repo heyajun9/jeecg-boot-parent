@@ -16,8 +16,11 @@
         <a-form-item label="组织名称" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-input v-decorator="[ 'organizationName', validatorRules.organizationName]" placeholder="请输入组织名称"></a-input>
         </a-form-item>
-        <a-form-item label="组织地址" :labelCol="labelCol" :wrapperCol="wrapperCol">
-          <a-input v-decorator="[ 'organizationAddress', validatorRules.organizationAddress]" placeholder="请输入组织地址"></a-input>
+        <a-form-item label="状态" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'status', validatorRules.status]" placeholder="请输入状态"></a-input>
+        </a-form-item>
+        <a-form-item label="地址" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'address', validatorRules.address]" placeholder="请输入地址"></a-input>
         </a-form-item>
         <a-form-item label="省" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-input v-decorator="[ 'province', validatorRules.province]" placeholder="请输入省"></a-input>
@@ -27,6 +30,24 @@
         </a-form-item>
         <a-form-item label="区" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-input v-decorator="[ 'area', validatorRules.area]" placeholder="请输入区"></a-input>
+        </a-form-item>
+        <a-form-item label="联系人" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'callPerson', validatorRules.callPerson]" placeholder="请输入联系人"></a-input>
+        </a-form-item>
+        <a-form-item label="联系方式" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'phone', validatorRules.phone]" placeholder="请输入联系方式"></a-input>
+        </a-form-item>
+        <a-form-item label="是否客户" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'isCustomer', validatorRules.isCustomer]" placeholder="请输入是否客户"></a-input>
+        </a-form-item>
+        <a-form-item label="是否供应商" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'isSupplier', validatorRules.isSupplier]" placeholder="请输入是否供应商"></a-input>
+        </a-form-item>
+        <a-form-item label="是否货主" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'isWarehouse', validatorRules.isWarehouse]" placeholder="请输入是否货主"></a-input>
+        </a-form-item>
+        <a-form-item label="是否承运商" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="[ 'isApplication', validatorRules.isApplication]" placeholder="请输入是否承运商"></a-input>
         </a-form-item>
         <a-form-item label="备注" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-input v-decorator="[ 'note', validatorRules.note]" placeholder="请输入备注"></a-input>
@@ -68,10 +89,17 @@
         validatorRules:{
         organizationCode:{},
         organizationName:{},
-        organizationAddress:{},
+        status:{},
+        address:{},
         province:{},
         city:{},
         area:{},
+        callPerson:{},
+        phone:{},
+        isCustomer:{},
+        isSupplier:{},
+        isWarehouse:{},
+        isApplication:{},
         note:{},
         },
         url: {
@@ -92,7 +120,7 @@
         this.model = Object.assign({}, record);
         this.visible = true;
         this.$nextTick(() => {
-          this.form.setFieldsValue(pick(this.model,'organizationCode','organizationName','organizationAddress','province','city','area','note'))
+          this.form.setFieldsValue(pick(this.model,'organizationCode','organizationName','status','address','province','city','area','callPerson','phone','isCustomer','isSupplier','isWarehouse','isApplication','note'))
         })
       },
       close () {
@@ -135,7 +163,7 @@
         this.close()
       },
       popupCallback(row){
-        this.form.setFieldsValue(pick(row,'organizationCode','organizationName','organizationAddress','province','city','area','note'))
+        this.form.setFieldsValue(pick(row,'organizationCode','organizationName','status','address','province','city','area','callPerson','phone','isCustomer','isSupplier','isWarehouse','isApplication','note'))
       }
       
     }

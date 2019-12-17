@@ -10,7 +10,7 @@ import org.jeecg.modules.demo.wmsOrganization.entity.WmsOrganization;
  /**
  * @Description: 组织单位表
  * @Author: jeecg-boot
- * @Date:   2019-11-29
+ * @Date:   2019-12-14
  * @Version: V1.0
  */
 @WebService(name="wmsOrganizationWebService",targetNamespace = "http://webService.wmsOrganization.org.jeecg.modules.demo")
