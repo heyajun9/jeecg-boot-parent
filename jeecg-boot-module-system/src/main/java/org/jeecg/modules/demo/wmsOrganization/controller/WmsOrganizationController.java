@@ -47,7 +47,7 @@ import com.alibaba.fastjson.JSON;
 @RestController
 @RequestMapping("/wmsOrganization/wmsOrganization")
 @Slf4j
-@Api(tags="wmsOrganization")
+//@Api(tags="wmsOrganization")
 public class WmsOrganizationController {
 	@Autowired
 	private IWmsOrganizationService wmsOrganizationService;
@@ -61,7 +61,7 @@ public class WmsOrganizationController {
 	 * @return
 	 */
 	@GetMapping(value = "/list")
-	@ApiOperation(value = "获取WmsOrganization数据列表", notes = "获取所有WmsOrganization数据列表")
+//	@ApiOperation(value = "获取WmsOrganization数据列表", notes = "获取所有WmsOrganization数据列表")
 	public Result<IPage<WmsOrganization>> queryPageList(WmsOrganization wmsOrganization,
 									  @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 									  @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
@@ -82,7 +82,7 @@ public class WmsOrganizationController {
 	 */
 	@InterfaceLog(value = "组织单位表-添加")
 	@PostMapping(value = "/add")
-	@ApiOperation(value = "添加WmsOrganization", notes = "添加WmsOrganization")
+//	@ApiOperation(value = "添加WmsOrganization", notes = "添加WmsOrganization")
 	public Result<WmsOrganization> add(@RequestBody WmsOrganization wmsOrganization) {
 		Result<WmsOrganization> result = new Result<WmsOrganization>();
 		try {
@@ -102,7 +102,7 @@ public class WmsOrganizationController {
     	 */
     	@InterfaceLog(value = "组织单位表-添加")
     	@PostMapping(value = "/addList")
-    	@ApiOperation(value = "批量添加WmsOrganization", notes = "批量添加WmsOrganization")
+//    	@ApiOperation(value = "批量添加WmsOrganization", notes = "批量添加WmsOrganization")
     	public Result<WmsOrganization> addList(@RequestBody List<WmsOrganization> wmsOrganizations) {
     		Result<WmsOrganization> result = new Result<WmsOrganization>();
     		try {
@@ -124,7 +124,7 @@ public class WmsOrganizationController {
 	 */
 	@InterfaceLog(value = "组织单位表-编辑")
 	@PutMapping(value = "/edit")
-	@ApiOperation(value = "编辑WmsOrganization", notes = "编辑WmsOrganization")
+//	@ApiOperation(value = "编辑WmsOrganization", notes = "编辑WmsOrganization")
 	public Result<WmsOrganization> edit(@RequestBody WmsOrganization wmsOrganization) {
 		Result<WmsOrganization> result = new Result<WmsOrganization>();
 		WmsOrganization wmsOrganizationEntity = wmsOrganizationService.getById(wmsOrganization.getId());
@@ -148,7 +148,7 @@ public class WmsOrganizationController {
 	 */
 	@InterfaceLog(value = "组织单位表-通过id删除")
 	@DeleteMapping(value = "/delete")
-	@ApiOperation(value = "通过ID删除WmsOrganization", notes = "通过ID删除WmsOrganization")
+//	@ApiOperation(value = "通过ID删除WmsOrganization", notes = "通过ID删除WmsOrganization")
 	public Result<?> delete(@RequestParam(name="id",required=true) String id) {
 		try {
 			wmsOrganizationService.removeById(id);
@@ -166,7 +166,7 @@ public class WmsOrganizationController {
 	 */
 	@InterfaceLog(value = "组织单位表-批量删除")
 	@DeleteMapping(value = "/deleteBatch")
-	@ApiOperation(value = "批量删除WmsOrganization", notes = "批量删除WmsOrganization")
+//	@ApiOperation(value = "批量删除WmsOrganization", notes = "批量删除WmsOrganization")
 	public Result<WmsOrganization> deleteBatch(@RequestParam(name="ids",required=true) String ids) {
 		Result<WmsOrganization> result = new Result<WmsOrganization>();
 		if(ids==null || "".equals(ids.trim())) {
@@ -184,7 +184,7 @@ public class WmsOrganizationController {
 	 * @return
 	 */
 	@GetMapping(value = "/queryById")
-	@ApiOperation(value = "通过ID查询WmsOrganization", notes = "通过ID查询WmsOrganization")
+//	@ApiOperation(value = "通过ID查询WmsOrganization", notes = "通过ID查询WmsOrganization")
 	public Result<WmsOrganization> queryById(@RequestParam(name="id",required=true) String id) {
 		Result<WmsOrganization> result = new Result<WmsOrganization>();
 		WmsOrganization wmsOrganization = wmsOrganizationService.getById(id);

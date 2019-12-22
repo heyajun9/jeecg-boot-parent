@@ -51,7 +51,7 @@ import com.alibaba.fastjson.JSON;
 @RestController
 @RequestMapping("/orderMain/testOrderMain")
 @Slf4j
-@Api(tags="testOrderMain")
+//@Api(tags="testOrderMain")
 public class TestOrderMainController {
 	@Autowired
 	private ITestOrderMainService testOrderMainService;
@@ -67,7 +67,7 @@ public class TestOrderMainController {
 	 * @return
 	 */
 	@GetMapping(value = "/list")
-	@ApiOperation(value = "获取TestOrderMain数据列表", notes = "获取所有TestOrderMain数据列表")
+//	@ApiOperation(value = "获取TestOrderMain数据列表", notes = "获取所有TestOrderMain数据列表")
 	public Result<IPage<TestOrderMain>> queryPageList(TestOrderMain testOrderMain,
 									  @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 									  @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
@@ -88,7 +88,7 @@ public class TestOrderMainController {
 	 */
 	@InterfaceLog(value = "测试订单主表-添加")
 	@PostMapping(value = "/add")
-	@ApiOperation(value = "添加TestOrderMainPage", notes = "添加TestOrderMainPage")
+//	@ApiOperation(value = "添加TestOrderMainPage", notes = "添加TestOrderMainPage")
 	public Result<TestOrderMain> add(@RequestBody TestOrderMainPage testOrderMainPage) {
 		Result<TestOrderMain> result = new Result<TestOrderMain>();
 		try {
@@ -111,7 +111,7 @@ public class TestOrderMainController {
     	 */
     	@InterfaceLog(value = "测试订单主表-添加")
     	@PostMapping(value = "/addList")
-    	@ApiOperation(value = "批量添加TestOrderMainPage", notes = "批量添加TestOrderMainPage")
+//    	@ApiOperation(value = "批量添加TestOrderMainPage", notes = "批量添加TestOrderMainPage")
     	public Result<TestOrderMain> addList(@RequestBody List<TestOrderMainPage> testOrderMainPages) {
     		Result<TestOrderMain> result = new Result<TestOrderMain>();
     		try {
@@ -136,7 +136,7 @@ public class TestOrderMainController {
 	 */
 	@InterfaceLog(value = "测试订单主表-编辑")
 	@PutMapping(value = "/edit")
-	@ApiOperation(value = "编辑TestOrderMainPage", notes = "编辑TestOrderMainPage")
+//	@ApiOperation(value = "编辑TestOrderMainPage", notes = "编辑TestOrderMainPage")
 	public Result<TestOrderMain> edit(@RequestBody TestOrderMainPage testOrderMainPage) {
 		Result<TestOrderMain> result = new Result<TestOrderMain>();
 		TestOrderMain testOrderMain = new TestOrderMain();
@@ -160,7 +160,7 @@ public class TestOrderMainController {
 	 */
 	@InterfaceLog(value = "测试订单主表-通过id删除")
 	@DeleteMapping(value = "/delete")
-	@ApiOperation(value = "通过ID删除TestOrderMainPage", notes = "通过ID删除TestOrderMainPage")
+//	@ApiOperation(value = "通过ID删除TestOrderMainPage", notes = "通过ID删除TestOrderMainPage")
 	public Result<?> delete(@RequestParam(name="id",required=true) String id) {
 		try {
 			testOrderMainService.delMain(id);
@@ -178,7 +178,7 @@ public class TestOrderMainController {
 	 */
 	@InterfaceLog(value = "测试订单主表-批量删除")
 	@DeleteMapping(value = "/deleteBatch")
-	@ApiOperation(value = "批量删除TestOrderMainPage", notes = "批量删除TestOrderMainPage")
+//	@ApiOperation(value = "批量删除TestOrderMainPage", notes = "批量删除TestOrderMainPage")
 	public Result<TestOrderMain> deleteBatch(@RequestParam(name="ids",required=true) String ids) {
 		Result<TestOrderMain> result = new Result<TestOrderMain>();
 		if(ids==null || "".equals(ids.trim())) {
@@ -196,7 +196,7 @@ public class TestOrderMainController {
 	 * @return
 	 */
 	@GetMapping(value = "/queryById")
-	@ApiOperation(value = "通过ID查询TestOrderMain", notes = "通过ID查询TestOrderMain")
+//	@ApiOperation(value = "通过ID查询TestOrderMain", notes = "通过ID查询TestOrderMain")
 	public Result<TestOrderMain> queryById(@RequestParam(name="id",required=true) String id) {
 		Result<TestOrderMain> result = new Result<TestOrderMain>();
 		TestOrderMain testOrderMain = testOrderMainService.getById(id);
@@ -215,7 +215,7 @@ public class TestOrderMainController {
 	 * @return
 	 */
 	@GetMapping(value = "/queryTestOrderProductByMainId")
-	@ApiOperation(value = "通过ID查询TestOrderProduct", notes = "通过ID查询TestOrderProduct")
+//	@ApiOperation(value = "通过ID查询TestOrderProduct", notes = "通过ID查询TestOrderProduct")
 	public Result<List<TestOrderProduct>> queryTestOrderProductListByMainId(@RequestParam(name="id",required=true) String id) {
 		Result<List<TestOrderProduct>> result = new Result<List<TestOrderProduct>>();
 		List<TestOrderProduct> testOrderProductList = testOrderProductService.selectByMainId(id);

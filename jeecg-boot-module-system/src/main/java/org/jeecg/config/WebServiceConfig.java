@@ -3,7 +3,6 @@ package org.jeecg.config;
 import org.apache.cxf.Bus;
 import org.apache.cxf.jaxws.EndpointImpl;
 import org.jeecg.modules.demo.orderMain.webService.TestOrderMainWebService;
-import org.jeecg.modules.demo.wmsItemTable.webService.WmsItemTableWebService;
 import org.jeecg.modules.demo.wmsOrganization.webService.WmsOrganizationWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -26,8 +25,6 @@ public class WebServiceConfig {
     @Autowired
     WmsOrganizationWebService wmsOrganizationWebService;
 
-    @Autowired
-    WmsItemTableWebService wmsItemTableWebService;
 
     @Autowired
     TestOrderMainWebService testOrderMainWebService;
@@ -37,12 +34,6 @@ public class WebServiceConfig {
     public Endpoint organizationEndpoint() {
         EndpointImpl endpoint = new EndpointImpl(bus, wmsOrganizationWebService);
         endpoint.publish("/wmsOrganizationWebService");
-        return endpoint;
-    }
-    @Bean
-    public Endpoint itemTableEndpoint(){
-        EndpointImpl endpoint = new EndpointImpl(bus, wmsItemTableWebService);
-        endpoint.publish("/wmsItemTableWebService");
         return endpoint;
     }
     @Bean

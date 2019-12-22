@@ -4,22 +4,22 @@
 
 	<!-- 清空所有日志记录 -->
 	<delete id="removeAll">
-		DELETE FROM sys_log
+		DELETE FROM sys_log_t
 	</delete>
 	
 	<!-- 获取访问总数 -->
 	<select id="findTotalVisitCount" resultType="long">
-        select count(1) from sys_log where log_type = 1
+        select count(1) from sys_log_t where log_type = 1
     </select>
 
 	<!-- 获取今日访问总数 -->
     <select id="findTodayVisitCount" resultType="long">
-        select count(1) from sys_log where log_type = 1 and create_time &gt;= #{dayStart} and create_time &lt; #{dayEnd}
+        select count(1) from sys_log_t where log_type = 1 and create_time &gt;= #{dayStart} and create_time &lt; #{dayEnd}
     </select>
     
 	<!-- 获取今日访问总IP数 -->
     <select id="findTodayIp" resultType="long">
-        select count(distinct(ip)) from sys_log where log_type = 1 and create_time &gt;= #{dayStart} and create_time &lt; #{dayEnd}
+        select count(distinct(ip)) from sys_log_t where log_type = 1 and create_time &gt;= #{dayStart} and create_time &lt; #{dayEnd}
     </select>
     
    	<!-- 首页访问统计 -->
@@ -28,7 +28,7 @@
         	   count(distinct(ip)) as ip,
         	   DATE_FORMAT(create_time, '%Y-%m-%d') as tian,
         	   DATE_FORMAT(create_time, '%m-%d') as type
-         from sys_log 
+         from sys_log_t 
          where log_type = 1 and create_time &gt;= #{dayStart} and create_time &lt; #{dayEnd}
          group by tian,type
          order by tian asc

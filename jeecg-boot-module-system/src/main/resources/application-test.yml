@@ -95,16 +95,19 @@ spring:
         connectionProperties: druid.stat.mergeSql\=true;druid.stat.slowSqlMillis\=5000
       datasource:
         master:
-#          #oralce数据源
-#           url: jdbc:oracle:thin:@10.4.5.180:1521:jeecgboot
-#           username: jeecgboot
-#           password: jeecgboot
-#           driver-class-name: oracle.jdbc.OracleDriver
+          #oralce数据源
+          #测试本机地址
+#           url: jdbc:oracle:thin:@127.0.0.1:1521:lmis
+          #测试VPN地址
+           url: jdbc:oracle:thin:@192.168.30.150:1521:lmis
+           username: lmis
+           password: lmis9system
+           driver-class-name: oracle.jdbc.OracleDriver
 #          mysql数据源
-          url: jdbc:mysql://127.0.0.1:3306/jeecg-boot-os?characterEncoding=UTF-8&useUnicode=true&useSSL=false
-          username: root
-          password: mysql
-          driver-class-name: com.mysql.jdbc.Driver
+#          url: jdbc:mysql://127.0.0.1:3306/jeecg-boot-os?characterEncoding=UTF-8&useUnicode=true&useSSL=false
+#          username: root
+#          password: mysql
+#          driver-class-name: com.mysql.jdbc.Driver
           # 多数据源配置   
           #multi-datasource1: 
             #url: jdbc:mysql://localhost:3306/jeecg-boot2?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true
